@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        </title>
+        <!--link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" /-->
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="my.css" />
+        <style>
+            /* App custom styles */
+        </style>
+        <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"-->
+        <script src="jquery.min.js">
+        </script>
+        <!--script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.js"-->
+        <script src="jquery.mobile-1.2.0.min.js">
+        </script>
+        <script src="my.js">
+        </script>
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div data-role="content">
+                <div data-role="collapsible-set" data-theme="b" data-content-theme="b">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>
+                            Basiswoorden bijdragen
+                        </h3>
+                        <p>asdf</p>
+                                                    <a href="index.html" data-transition="fade">
+                                bijdragen
+                            </a>
+                    </div>
+                </div>
+                <form action="basiswoord.html" method="POST">
+
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <div>
+                            <strong>flexievorm:</strong> <a target="_blank" href="http://data.opentaal.org/opentaalbank/woorddetails.php?word=huisjes" data-transition="fade">
+                                huisjes
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <input data-theme="b" data-icon="forward" data-iconpos="left" value="Sla over" type="submit" />
+                    </div>
+                    <div class="ui-block-a">
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup">
+                                <label for="textinput1">
+                                </label>
+                                <strong>basiswoord:</strong> <input name="base" id="textinput1" placeholder="" value="huis" type="text" />
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <input data-theme="b" data-icon="plus" data-iconpos="left" value="Dien in" type="submit" />
+                    </div>
+                    <div class="ui-block-a">
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup">
+                                <label for="textinput2">
+                                </label>
+                                <strong>opmerking:</strong> <input name="comment" id="textinput2" placeholder="" value="" type="text" />
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <input data-theme="b" data-icon="alert" data-iconpos="left" value="Meld fout" type="submit" />
+                    </div>
+                </div>
+
+
+                </form>
+            </div>
+        </div>
+        <script>
+            //App custom javascript
+        </script>
+    </body>
+</html>
