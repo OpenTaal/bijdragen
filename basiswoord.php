@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
         </title>
@@ -55,7 +56,7 @@
                         <form action="basiswoord.php" method="POST">
                         <div data-role="fieldcontain">
                                 <input name="woord" id="woord" placeholder="" value="Nederlands" type="hidden" />
-                                <textarea name="opmerking" id="opmerking" placeholder="" value="" type="textarea"></textarea>
+                                <textarea name="opmerking" id="opmerking" placeholder="" value="" type="textarea">De flexievorm goederentreinwagons </textarea>
                         </div>
                         <input data-theme="e" value="Meld fout" type="submit" />
                         </form>

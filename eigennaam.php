@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
         </title>
@@ -38,7 +39,7 @@
                     <div class="ui-block-a">
 <div id="checkboxes1" data-role="fieldcontain">
 <input id="checkbox1" name="" type="checkbox">
-<label for="checkbox1">Voornaam, M/V</label>
+<label for="checkbox1">Voornaam, M en/of V</label>
 <!--input id="checkbox2" name="" type="checkbox">
 <label for="checkbox2">Tussenvoegsel, voorvoegsel</label-->
 <input id="checkbox3" name="" type="checkbox">
@@ -60,7 +61,7 @@
 <input id="checkbox7" name="" type="checkbox">
 <label for="checkbox7">Bedrijf, handelsnaam</label>
 <input id="checkbox8" name="" type="checkbox">
-<label for="checkbox8">Product, merk</label>
+<label for="checkbox8">Product, merk, type</label>
 <input id="checkboxz" name="" type="checkbox">
 <label for="checkboxz">Geen eigennaam</label><!--TODO deselecteer alle andere via javascript-->
 </div>
@@ -89,7 +90,7 @@
                     </div>
                 </div>
                 </form>
-                <div data-role="collapsible-set" data-theme="e" data-content-theme="e">
+                <div data-role="collapsible-set" data-theme="e" data-content-theme="e"><!-- verberg normale submitknoppen-->
                     <div data-role="collapsible" data-collapsed="true">
                         <h3>
                             Fout melden
@@ -97,7 +98,7 @@
                         <form action="eigennaam.php" method="POST">
                         <div data-role="fieldcontain">
                                 <input name="woord" id="woord" placeholder="" value="Nederlands" type="hidden" />
-                                <textarea name="opmerking" id="opmerking" placeholder="" value="" type="textarea"></textarea>
+                                <textarea name="opmerking" id="opmerking" placeholder="" value="" type="textarea">De eigennaam Nederlands </textarea>
                         </div>
                         <input data-theme="e" value="Meld fout" type="submit" />
                         </form>
