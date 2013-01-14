@@ -1,3 +1,26 @@
+<?PHP
+require_once '../include/db_connectTweak.php';
+db_connect("light");
+require_once '../include/lib.php';
+require_once '../include/top.php';
+require_once '../i_lib.php';
+mysql_set_charset('utf8');
+
+$query="SELECT suggested,correct,incorrect,show_help,completed_test FROM mobile_score WHERE user_id = 3";
+$suggested = '0';
+$correct = '0';
+$incorrect = '0';
+$show_help = '1';
+$completed_test = '0';
+$result = mysql_query($query) or die (mysql_error());
+while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
+  $suggested = $row['suggested'];
+  $correct = $row['correct'];
+  $incorrect = $row['incorrect'];
+  $show_help = $row['show_help'];
+  $completed_test = $row['completed_test'];
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,6 +53,11 @@
                         <p>asdf</p>
                     </div>
                 </div>
+ingediend: <?PHP echo $suggested;?><br>
+uiteindelijk correct: <?PHP echo $correct;?><br>
+uiteindelijk incorrect: <?PHP echo $incorrect;?><br>
+toon help: <?PHP echo $show_help;?><br>
+test afgerond: <?PHP echo $completed_test;?><br>
                 <h3><a href="basiswoord.php" data-transition="fade">basiswoord</a></h3>
                 <h3><a href="correctie.php" data-transition="fade">correctie</a></h3>
                 <h3><a href="initiaalwoord.php" data-transition="fade">initiaalwoord</a></h3>

@@ -6,6 +6,21 @@ require_once '../include/top.php';
 require_once '../i_lib.php';
 mysql_set_charset('utf8');
 
+$query="SELECT suggested,correct,incorrect,show_help,completed_test FROM mobile_score WHERE user_id = 3 AND type_id = 1";
+$suggested = '0';
+$correct = '0';
+$incorrect = '0';
+$show_help = '1';
+$completed_test = '0';
+$result = mysql_query($query) or die (mysql_error());
+while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
+  $suggested = $row['suggested'];
+  $correct = $row['correct'];
+  $incorrect = $row['incorrect'];
+  $show_help = $row['show_help'];
+  $completed_test = $row['completed_test'];
+}
+
 $query="SELECT id,word,aantekeningen FROM words_list WHERE (next_version = 'f' OR next_version = 'F' OR next_version OR next_version = 'U' OR next_version = 'u') LIMIT 0,5000";
 $offset = rand(1, 5000);
 $count = 0;
@@ -164,7 +179,7 @@ $suggestie = $flexievorm;
         <div data-role="page" id="page1">
             <div data-role="content">
                 <div data-role="collapsible-set" data-theme="b">
-                    <div data-role="collapsible" data-collapsed="true">
+                    <div data-role="collapsible" data-collapsed="<?PHP if (strcmp($show_help, '0') == 0) { echo 'true';} else {echo 'false';}?>">
                         <h3>
                             Basiswoorden bijdragen
                         </h3>
