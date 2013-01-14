@@ -27,32 +27,15 @@
                 <div data-role="collapsible-set" data-theme="b" data-content-theme="b">
                     <div data-role="collapsible" data-collapsed="false">
                         <h3>
-                            Basiswoorden bijdragen
+                            Bijdragen
                         </h3>
                         <p>asdf</p>
-                                                    <a href="index.html" data-transition="fade">bijdragen</a>
                     </div>
                 </div>
-                <h3><a target="_blank" href="http://data.opentaal.org/opentaalbank/woorddetails.php?word=goederentreinwagons" data-transition="fade">goederentreinwagons</a></h3>
-                <form action="basiswoord.html" method="POST">
-                        <div data-role="fieldcontain">
-                                <input name="base" id="basiswoord" placeholder="" value="goederentreinwagon" type="text" />
-                        </div>
-                <div class="ui-grid-b">
-                    <div class="ui-block-a">
-                        <input data-theme="b" value="Dien in" type="submit" />
-                    </div>
-                    <div class="ui-block-b">
-                        <input data-theme="b" value="Sla over" type="submit" />
-                    </div>
-                    <div class="ui-block-c">
-                        <input data-theme="e" value="Meld fout" type="submit" />
-                    </div>
-                </div>
-                <div data-role="fieldcontain">
-                        <input name="base" id="opmerking" placeholder="" value="" type="text" />
-                </div>
-                </form>
+                <h3><a href="basiswoord.php" data-transition="fade">basiswoord</a></h3>
+                <h3><a href="initiaalwoord.php" data-transition="fade">initiaalwoord</a></h3>
+                <h3><a href="eigennaam.php" data-transition="fade">eigennaam</a></h3>
+                <h3><a href="geslacht.php" data-transition="fade">geslacht</a></h3>
             </div>
         </div>
         <script>

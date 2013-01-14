@@ -30,44 +30,54 @@
                             Geslacht bijdragen
                         </h3>
                         <p>asdf</p>
-                                                    <a href="index.html" data-transition="fade">bijdragen</a>
+                                                    <a href="index.php" data-transition="fade">bijdragen</a>
                     </div>
                 </div>
-                <h3><a target="_blank" href="http://data.opentaal.org/opentaalbank/woorddetails.php?word=goederentreinwagon" data-transition="fade">goederentreinwagon</a></h3>
-                <form action="geslacht.html" method="POST">
-                <div class="ui-grid-b">
+                <div data-role="collapsible-set" data-theme="b" data-content-theme="b">
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>goederentreinwagon</h3>
+                    </div>
+                </div>
+                <form action="geslacht.php" method="POST">
+                <div class="ui-grid-a">
                     <div class="ui-block-a">
-                        <input data-theme="b" value="M" type="submit" />
+<div id="checkboxes1" data-role="fieldcontain">
+<input id="checkbox1" name="" type="checkbox">
+<label for="checkbox1">Mannelijk (de)</label>
+<input id="checkbox2" name="" type="checkbox">
+<label for="checkbox2">Vrouwelijk (de)</label>
+</div>
+
                     </div>
                     <div class="ui-block-b">
-                        <input data-theme="b" value="V" type="submit" />
-                    </div>
-                    <div class="ui-block-c">
-                        <input data-theme="b" value="O" type="submit" />
-                    </div>
-                    <div class="ui-block-a">
-                        <input data-theme="b" value="M&O" type="submit" />
-                    </div>
-                    <div class="ui-block-b">
-                        <input data-theme="b" value="V&O" type="submit" />
-                    </div>
-                    <div class="ui-block-c">
-                        <input data-theme="b" value="M&V" type="submit" />
+<div id="checkboxes1" data-role="fieldcontain">
+<input id="checkbox3" name="" type="checkbox">
+<label for="checkbox3">Onzijdig (het)</label>
+<input id="checkbox4" name="" type="checkbox">
+<label for="checkbox4">Onbekend (Linux)</label><!--TODO deselecteer alle andere via javascript-->
+</div>
                     </div>
                     <div class="ui-block-a">
-                        <input data-theme="b" value="M&V&O" type="submit" />
-                    </div>
-                    <div class="ui-block-b">
                         <input data-theme="b" value="Sla over" type="submit" />
                     </div>
-                    <div class="ui-block-c">
-                        <input data-theme="e" value="Meld fout" type="submit" />
+                    <div class="ui-block-b">
+                        <input data-theme="b" value="Dien in" type="submit" />
                     </div>
                 </div>
-                        <div data-role="fieldcontain">
-                                <input name="base" id="opmerking" placeholder="" value="" type="text" />
-                        </div>
                 </form>
+                <div data-role="collapsible-set" data-theme="e" data-content-theme="e">
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>
+                            Fout melden
+                        </h3>
+                        <form action="geslacht.php" method="POST">
+                        <div data-role="fieldcontain">
+                                <input name="woord" id="woord" placeholder="" value="Nederlands" type="hidden" />
+                                <textarea name="opmerking" id="opmerking" placeholder="" value="" type="textarea"></textarea>
+                        </div>
+                        <input data-theme="e" value="Meld fout" type="submit" />
+                        </form>
+                    </div>
             </div>
         </div>
         <script>
