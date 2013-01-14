@@ -23,7 +23,7 @@
         <div data-role="page" id="page1">
             <div data-role="content">
                 <div data-role="collapsible-set" data-theme="b">
-                    <div data-role="collapsible" data-collapsed="false">
+                    <div data-role="collapsible" data-collapsed="true">
                         <h3>
                             Bijdragen
                         </h3>
@@ -35,7 +35,7 @@
                 <h3><a href="initiaalwoord.php" data-transition="fade">initiaalwoord</a></h3>
                 <h3><a href="meervoud.php" data-transition="fade">meervoud</a></h3>
                 <h3><a href="eigennaam.php" data-transition="fade">eigennaam</a></h3>
-                <h3><a href="geslacht.php" data-transition="fade">geslacht</a></h3>
+                <h3><a href="geslacht.php" data-transition="fade">geslacht</a> (moeilijk)</h3>
 in- en uitloggen
             </div>
         </div>

@@ -23,7 +23,7 @@
         <div data-role="page" id="page1">
             <div data-role="content">
                 <div data-role="collapsible-set" data-theme="b">
-                    <div data-role="collapsible" data-collapsed="false">
+                    <div data-role="collapsible" data-collapsed="true">
                         <h3>
                             Eigennaam categoriseren
                         </h3>
