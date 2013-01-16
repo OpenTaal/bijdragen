@@ -14,6 +14,7 @@ $show_help = '1';
 $completed_test = '0';
 $result = mysql_query($query) or die (mysql_error());
 while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
+//FIXME accumulate scores
   $suggested = $row['suggested'];
   $correct = $row['correct'];
   $incorrect = $row['incorrect'];
