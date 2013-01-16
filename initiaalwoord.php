@@ -63,12 +63,12 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
                     </div>
                     <div data-role="collapsible" data-collapsed="true">
                         <h3><?PHP echo $woord;?></h3>
-                        status: <i><?PHP echo $woordstatus;?></i>
-			<?PHP if (strcmp($woordtype, '')) {echo ' type: <i>'.$woordtype.'</i> ';}?>
-			<?PHP if (strcmp($aantekeningen, '')) {echo ' aantekening: <i>'.$aantekeningen.'</i> ';}?>
-                        <a target="_blank" href="https://nl.wikipedia.org/wiki/<?PHP echo $woord;?>"><img src="images/wikipedia.png"></a>
-                        <a target="_blank" href="https://nl.wiktionary.org/wiki/<?PHP echo $flexievorm;?>"><img src="images/wiktionary.png"></a>
-                        <a target="_blank" href='https://google.nl/#hl=nl&q="<?PHP echo $woord;?>"'><img src="images/google.png"></a>
+                        status: <?PHP echo $woordstatus;?>
+			<?PHP if (strcmp($woordtype, '')) {echo ' type: '.$woordtype;}?>
+			<?PHP if (strcmp($aantekeningen, '')) {echo ' aantekening: '.$aantekeningen;}?>
+                        &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wikipedia.org/wiki/<?PHP echo $woord;?>"><img src="images/wikipedia.png"></a>
+                        &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wiktionary.org/wiki/<?PHP echo $flexievorm;?>"><img src="images/wiktionary.png"></a>
+                        &nbsp;&nbsp;&nbsp;<a target="_blank" href='https://google.nl/#hl=nl&q="<?PHP echo $woord;?>"'><img src="images/google.png"></a>
                     </div>
                 </div>
                         <form action="initiaalwoord.php" method="POST">
