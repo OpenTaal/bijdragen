@@ -6,7 +6,7 @@ require_once '../include/top.php';
 require_once '../i_lib.php';
 mysql_set_charset('utf8');
 
-$query="select id,word,next_version,woordtype,aantekeningen from words_list where (next_version = 'b' or next_version = 'B' or next_version = 'k' or next_version = 'K' or next_version = 'v' or next_version = 'V' or next_version = 'w' or next_version = 'W' or next_version = 'd' or next_version = 'D') and word rlike '^[ÅÇÑA-Z0-9]{2,}$' limit 1024";
+$query="select id,word,next_version,woordtype,aantekeningen from words_list where (next_version = 'b' or next_version = 'B' or next_version = 'k' or next_version = 'K' or next_version = 'v' or next_version = 'V' or next_version = 'w' or next_version = 'W' or next_version = 'd' or next_version = 'D') and (word rlike '^[A-Z0-9]{2,}$' or word rlike '^[A-Z0-9][a-z]{1,}[A-Z0-9]{1,}.*$') limit 1024";
 $result = mysql_query($query) or die (mysql_error());
 $num = mysql_num_rows($result);
 $offset = rand(1, $num);
@@ -83,7 +83,7 @@ if (strcmp($woordstatus, 'k') == 0) {
                         <h3>
                             Initiaalwoorden vinden
                         </h3>
-                        <p>... letterwoord (NAVO, havo) initiaalwoord (ANWB, tzt) mengvorm XS4ALL </p>
+                        <p>... letterwoord (NAVO, havo, romeinse cijfers), initiaalwoord (ANWB, tzt), mengvorm XS4ALL CDROM</p>
                                                     <a href="index.php" data-transition="fade">bijdragen</a>
                     </div>
                     <div data-role="collapsible" data-collapsed="true">
