@@ -50,7 +50,7 @@
 <input id="checkbox3" name="" type="checkbox">
 <label for="checkbox3">Onzijdig (het)</label>
 <input id="checkbox4" name="" type="checkbox">
-<label for="checkbox4">Onbekend (Linux)</label><!--TODO deselecteer alle andere via javascript-->
+<label for="checkbox4">Onbepaald (Linux)</label><!--TODO deselecteer alle andere via javascript-->
 </div>
                     </div>
                     <div class="ui-block-a">

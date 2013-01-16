@@ -27,6 +27,31 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
         break;
     }
 }
+if (strcmp($woordstatus, 'k') == 0) {
+  $woordstatus = 'Gepland om als gekeurd basiswoord in collectie op te nemen.';
+} elseif (strcmp($woordstatus, 'K') == 0) {
+  $woordstatus = 'Als gekeurd basiswoord in collectie opgenomen.';
+} elseif (strcmp($woordstatus, 'b') == 0) {
+  $woordstatus = 'Gepland om als ongekeurd basiswoord in collectie op te nemen.';
+} elseif (strcmp($woordstatus, 'B') == 0) {
+  $woordstatus = 'Als ongekeurd basiswoord in collectie opgenomen.';
+} elseif (strcmp($woordstatus, 'f') == 0) {
+  $woordstatus = 'Gepland om als ongekeurde flexievorm in collectie op te nemen.';
+} elseif (strcmp($woordstatus, 'F') == 0) {
+  $woordstatus = 'Als ongekeurde flexievorm in collectie opgenomen.';
+} elseif (strcmp($woordstatus, 'v') == 0) {
+  $woordstatus = 'Gepland om als gekeurd basiswoord in collectie op te nemen. Verwarrend voor spellingcontrole.';
+} elseif (strcmp($woordstatus, 'V') == 0) {
+  $woordstatus = 'Als gekeurd basiswoord in collectie opgenomen. Verwarrend voor spellingcontrole.';
+} elseif (strcmp($woordstatus, 'w') == 0) {
+  $woordstatus = 'Gepland om als ongekeurd basiswoord in collectie op te nemen. Verwarrend voor spellingcontrole.';
+} elseif (strcmp($woordstatus, 'W') == 0) {
+  $woordstatus = 'Als ongekeurd basiswoord in collectie opgenomen. Verwarrend voor spellingcontrole.';
+} elseif (strcmp($woordstatus, 'u') == 0) {
+  $woordstatus = 'Gepland om als ongekeurde flexievorm in collectie op te nemen. Verwarrend voor spellingcontrole.';
+} elseif (strcmp($woordstatus, 'U') == 0) {
+  $woordstatus = 'Als ongekeurde flexievorm in collectie opgenomen. Verwarrend voor spellingcontrole.';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,9 +88,9 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
                     </div>
                     <div data-role="collapsible" data-collapsed="true">
                         <h3><?PHP echo $woord;?></h3>
-                        status: <?PHP echo $woordstatus;?>
-			<?PHP if (strcmp($woordtype, '')) {echo ' type: '.$woordtype;}?>
-			<?PHP if (strcmp($aantekeningen, '')) {echo ' aantekening: '.$aantekeningen;}?>
+                        <strong>status:</strong> <?PHP echo $woordstatus;?>
+			<?PHP if (strcmp($woordtype, '')) {echo ' <strong>type</strong>: '.$woordtype;}?>
+			<?PHP if (strcmp($aantekeningen, '')) {echo ' <strong>aantekening</strong>: '.$aantekeningen;}?>
                         &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wikipedia.org/wiki/<?PHP echo $woord;?>"><img src="images/wikipedia.png"></a>
                         &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wiktionary.org/wiki/<?PHP echo $flexievorm;?>"><img src="images/wiktionary.png"></a>
                         &nbsp;&nbsp;&nbsp;<a target="_blank" href='https://google.nl/#hl=nl&q="<?PHP echo $woord;?>"'><img src="images/google.png"></a>
