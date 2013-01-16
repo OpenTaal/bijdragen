@@ -6,8 +6,10 @@ require_once '../include/top.php';
 require_once '../i_lib.php';
 mysql_set_charset('utf8');
 
-$query="select id,word,next_version,woordtype,aantekeningen from words_list where (next_version = 'b' or next_version = 'B' or next_version = 'k' or next_version = 'K' or next_version = 'f' or next_version = 'f' or next_version = 'u' or next_version = 'U' or next_version = 'v' or next_version = 'V' or next_version = 'w' or next_version = 'W' or next_version = 'd' or next_version = 'D') and (word rlike '^[ÅÇA-Z].*' or word rlike '^[0-9][ÅÇA-Z].*') and (word <> '3D' and word <> '3D-visualisatie' and word not rlike '^[ÅÇA-Z]-[^ÅÇA-Z0-9].*') LIMIT 0,5000";//TODO voeg toe aan middelste  or word rlike '^[åça-z][ÅÇA-Z0-9^éèëêáàäâíìïîóòöôúùüûñç].*' maar zorg dat woorden als bèta niet doorkomen
-$offset = rand(1, 5000);//TODO 5000 moet worden lengte van $result
+$query="select id,word,next_version,woordtype,aantekeningen from words_list where (next_version = 'b' or next_version = 'B' or next_version = 'k' or next_version = 'K' or next_version = 'v' or next_version = 'V' or next_version = 'w' or next_version = 'W' or next_version = 'd' or next_version = 'D') and (word rlike '^[ÅÇA-Z].*' or word rlike '^[0-9][ÅÇA-Z].*') and (word <> '3D' and word <> '3D-visualisatie' and word not rlike '^[ÅÇA-Z]-[^ÅÇA-Z0-9].*') limit 1024";//TODO voeg toe aan middelste  or word rlike '^[åça-z][ÅÇA-Z0-9^éèëêáàäâíìïîóòöôúùüûñç].*' maar zorg dat woorden als bèta niet doorkomen
+$result = mysql_query($query) or die (mysql_error());
+$num = mysql_num_rows($result);
+$offset = rand(1, $num);
 $count = 0;
 $id = '';
 $eigennaam = '';
@@ -61,8 +63,11 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
                     <div data-role="collapsible" data-collapsed="true">
                         <h3><?PHP echo $eigennaam;?></h3>
                         status: <i><?PHP echo $woordstatus;?></i>
-			<?PHP if (strcmp($woordtype, '')) {echo ' type: <i>'.$woordtype.'</i>';}?>
-			<?PHP if (strcmp($aantekeningen, '')) {echo ' aantekening: <i>'.$aantekeningen.'</i>';}?>
+			<?PHP if (strcmp($woordtype, '')) {echo ' type: <i>'.$woordtype.'</i> ';}?>
+			<?PHP if (strcmp($aantekeningen, '')) {echo ' aantekening: <i>'.$aantekeningen.'</i> ';}?>
+                        <a target="_blank" href="https://nl.wikipedia.org/wiki/<?PHP echo $eigennaam;?>"><img src="images/wikipedia.png"></a>
+                        <a target="_blank" href="https://nl.wiktionary.org/wiki/<?PHP echo $flexievorm;?>"><img src="images/wiktionary.png"></a>
+                        <a target="_blank" href='https://google.nl/#hl=nl&q="<?PHP echo $eigennaam;?>"'><img src="images/google.png"></a>
                     </div>
                 </div>
                 <form action="eigennaam.php" method="POST">
@@ -120,7 +125,7 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
 <input id="checkboxz" name="" type="checkbox">
 <label for="checkboxz">Hoofdletter&shy;schrijfwijze</label><!--TODO deselecteer alle andere via javascript-->
 <input id="checkboxj" name="" type="checkbox">
-<label for="checkboxj">Geen eigennaam</label><!--TODO desekect rest--><!-- ADHD-kind AOW-uitkering? ABC-wapens DNA-test Paasmaaltijd -->
+<label for="checkboxj">Geen eigennaam</label><!--TODO desekect rest--><!-- ADHD-kind AOW-uitkering? ABC-wapens DNA-test Paasmaaltijd CDA-minister -->
 </div>
                     </div>
                 </div>
@@ -139,9 +144,10 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
                             Fout melden
                         </h3>
                         <form action="eigennaam.php" method="POST">
+                        De eigennaam <?PHP echo $flexievorm;?> is fout omdat deze
                         <div data-role="fieldcontain">
-                                <input name="woord" id="woord" placeholder="" value="Nederlands" type="hidden" />
-                                <textarea name="opmerking" id="opmerking" placeholder="" value="" type="textarea">De eigennaam Nederlands </textarea>
+                                <input name="woord" id="id" placeholder="" value=" <?PHP echo $id;?>" type="hidden" />
+                                <input name="base" id="opmerking" placeholder="" value="" type="text" />
                         </div>
                         <input data-theme="e" value="Meld fout" type="submit" />
                         </form>

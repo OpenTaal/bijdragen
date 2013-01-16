@@ -21,11 +21,15 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
   $completed_test = $row['completed_test'];
 }
 
-$query="SELECT id,word,aantekeningen FROM words_list WHERE (next_version = 'f' OR next_version = 'F' OR next_version OR next_version = 'U' OR next_version = 'u') LIMIT 0,5000";
-$offset = rand(1, 5000);
+$query="SELECT id,word,next_version,woordtype,aantekeningen FROM words_list WHERE (next_version = 'f' OR next_version = 'F' OR next_version OR next_version = 'U' OR next_version = 'u') LIMIT 0,1000";
+$result = mysql_query($query) or die (mysql_error());
+$num = mysql_num_rows($result);
+$offset = rand(1, $num);
 $count = 0;
-$flexievorm = '';
 $id = '';
+$flexievorm = '';
+$woordstatus = '';
+$woordtype = '';
 $aantekeningen = '';
 $result = mysql_query($query) or die (mysql_error());
 while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
@@ -33,6 +37,8 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
     if ($count == $offset) {
         $id = $row['id'];
         $flexievorm = $row['word'];
+        $woordstatus = $row['next_version'];
+        $woordtype = $row['woordtype'];
         $aantekeningen = $row['aantekeningen'];
         break;
     }
@@ -197,7 +203,12 @@ $suggestie = $flexievorm;
                     </div>
                     <div data-role="collapsible" data-collapsed="true">
                         <h3><?PHP echo $flexievorm;?></h3>
-                        <?PHP if (strcmp($aantekeningen, "NULL")!=0 && mb_strlen($aantekeningen)!=0){echo 'aantekeningen: '.$aantekeningen;}?>
+                        status: <i><?PHP echo $woordstatus;?></i>
+			<?PHP if (strcmp($woordtype, '')) {echo ' type: <i>'.$woordtype.'</i> ';}?>
+			<?PHP if (strcmp($aantekeningen, '')) {echo ' aantekening: <i>'.$aantekeningen.'</i> ';}?>
+                        <a target="_blank" href="https://nl.wikipedia.org/wiki/<?PHP echo $flexievorm;?>"><img src="images/wikipedia.png"></a>
+                        <a target="_blank" href="https://nl.wiktionary.org/wiki/<?PHP echo $flexievorm;?>"><img src="images/wiktionary.png"></a>
+                        <a target="_blank" href='https://google.nl/#hl=nl&q="<?PHP echo $flexievorm;?>"'><img src="images/google.png"></a>
                     </div>
                 </div>
                 <form name="bijdrage" action="basiswoord.php" method="POST">
@@ -219,9 +230,10 @@ $suggestie = $flexievorm;
                             Fout melden
                         </h3>
                         <form action="basiswoord.php" method="POST">
+                        De flexievorm <?PHP echo $flexievorm;?> is fout omdat deze
                         <div data-role="fieldcontain">
-                                <input name="woord" id="woord" placeholder="" value="Nederlands" type="hidden" />
-                                <textarea name="opmerking" id="opmerking" placeholder="" value="" type="textarea">De flexievorm <?PHP echo $flexievorm;?> </textarea>
+                                <input name="woord" id="id" placeholder="" value="<?PHP echo $id;?>" type="hidden" />
+                                <input name="base" id="opmerking" placeholder="" value="" type="text" />
                         </div>
                         <input data-theme="e" value="Meld fout" type="submit" />
                         </form>

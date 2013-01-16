@@ -67,9 +67,10 @@
                             Fout melden
                         </h3>
                         <form action="geslacht.php" method="POST">
+                        Het woord <?PHP echo $woord;?> is fout omdat dit
                         <div data-role="fieldcontain">
-                                <input name="woord" id="woord" placeholder="" value="Nederlands" type="hidden" />
-                                <textarea name="opmerking" id="opmerking" placeholder="" value="" type="textarea">Het geslacht van goederentreinwagon </textarea>
+                                <input name="woord" id="id" placeholder="" value=" <?PHP echo $id;?>" type="hidden" />
+                                <input name="base" id="opmerking" placeholder="" value="" type="text" />
                         </div>
                         <input data-theme="e" value="Meld fout" type="submit" />
                         </form>
