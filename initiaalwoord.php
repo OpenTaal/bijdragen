@@ -79,14 +79,15 @@ if (strcmp($woordstatus, 'k') == 0) {
         <div data-role="page" id="page1">
             <div data-role="content">
                 <div data-role="collapsible-set" data-theme="b">
-                    <div data-role="collapsible" data-collapsed="true">
+                    <div data-role="collapsible" data-collapsed="false">
                         <h3>
                             Initiaalwoorden vinden
                         </h3>
-                        <p>... letterwoord (NAVO, havo, romeinse cijfers), initiaalwoord (ANWB, tzt), mengvorm XS4ALL CDROM</p>
-                                                    <a href="index.php" data-transition="fade">bijdragen</a>
+                        Het is hier mogelijk om <a href="index.php" data-transition="fade">bijdragen</a> te leveren aan OpenTaal omtrent <a target="_blank" href="https://nl.wikipedia.org/wiki/Initiaalwoord">initiaalwoorden</a>. Dit zijn woorden waarvan de letters los gespeld worden. Een dergelijk woord wordt ook wel <a target="_blank" href="https://nl.wikipedia.org/wiki/Acroniem">acroniem</a> genoemd en bevat meestal hoofdletters. Enkele voorbeelden zijn CBS, INL en MRI. Woorden die normaal worden uitgesproken heten letterwoorden. Voorbeelden hiervan zijn havo, NAVO en OpenStreetMap. Merk op dat dit niets te maken heeft met de hoofdletters of de afkomst van een <a target="_blank" href="https://nl.wikipedia.org/wiki/Afkorting">afkorting</a>. Omdat het hier om de uitspraak gaat zijn de getallen in <a target="_blank" href="">Romeinse cijfers</a>, zoals XIV en MMXIII, ook letterwoorden. Er bestaan ook mengvormen zoals XS4ALL en cd-rom. Dit geldt ook voor <a target="_blank" href="https://nl.wikipedia.org/wiki/Nederlandse_samenstelling">Samenstellingen</a> zoals PvdA-voorzitter. Let op, soms kan het zijn dat er verschillende uitspraken zijn. Dat is meestal het geval als er ook verschillende beteknissen zijn. Een voorbeeld is XXX dat een initiaalwoord is in de context van XXX-syndroom en dat ook een letterwoord is als het getal 30 in Romeinse cijfers. Een ander voorbeeld is V voor Volt en vijf. Er zijn dus verschillende instinkers zoals ook <a target="_blank" href="https://nl.wikipedia.org/wiki/BOB">BOB</a>, de Wet BOB (<em>b-o-b</em>).<!--alles herbenoemen tot (uitspraak) afkortingen en toevoegen symbolen, verkortingen etc.-->
                     </div>
-                    <div data-role="collapsible" data-collapsed="true">
+                </div>
+                <div data-role="collapsible-set" data-theme="b">
+                    <div data-role="collapsible" data-collapsed="<?PHP if (strcmp($woordtype, '') || strcmp($aantekeningen, '')) {echo 'false';} else {echo 'true';}?>">
                         <h3><?PHP echo $woord;?></h3>
                         <strong>status:</strong> <?PHP echo $woordstatus;?>
 			<?PHP if (strcmp($woordtype, '')) {echo ' <strong>type</strong>: '.$woordtype;}?>
@@ -97,13 +98,13 @@ if (strcmp($woordstatus, 'k') == 0) {
                     </div>
                 </div>
                         <form action="initiaalwoord.php" method="POST">
-<div data-role="fieldcontain">
-<input id="radio1" name="" value="" type="radio">
-<label for="radio1">Initiaalwoord</label>
-<input id="radio2" name="" value="" type="radio">
-<label for="radio2">Mengvorm</label>
-<input id="radio3" name="" value="" type="radio">
-<label for="radio3">Letterwoord</label>
+<div id="checkboxes1" data-role="fieldcontain">
+<input id="checkbox1" name="initiaalvorm" type="checkbox">
+<label for="checkbox1">Initialwoord</label>
+<input id="checkbox2" name="letterwoord" type="checkbox">
+<label for="checkbox2">Letterwoord</label>
+<input id="checkbox3" name="mengvorm" type="checkbox">
+<label for="checkbox3">Mengvorm</label>
 </div>
                 <div class="ui-grid-a">
                     <div class="ui-block-a">
