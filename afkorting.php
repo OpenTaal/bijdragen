@@ -6,7 +6,14 @@ require_once '../include/top.php';
 require_once '../i_lib.php';
 mysql_set_charset('utf8');
 
-$query="select id,word,next_version,woordtype,aantekeningen from words_list where (next_version = 'b' or next_version = 'B' or next_version = 'k' or next_version = 'K' or next_version = 'v' or next_version = 'V' or next_version = 'w' or next_version = 'W' or next_version = 'd' or next_version = 'D') and (word rlike '^[A-Z0-9]{2,}$' or word rlike '^[A-Z0-9][a-z]{1,}[A-Z0-9]{1,}.*$') limit 1024";
+$where="where (next_version = 'b' or next_version = 'B' or next_version = 'k' or next_version = 'K' or next_version = 'v' or next_version = 'V' or next_version = 'w' or next_version = 'W' or next_version = 'd' or next_version = 'D') and (word rlike '^[A-Z0-9]{2,}$' or word rlike '^[A-Z0-9][a-z]{1,}[A-Z0-9]{1,}.*$' or word rlike '^([a-zA-Z0-9]{1,}[.]){1,}$')";
+$query="select count(id) as todo from words_list ".$where;
+$result = mysql_query($query) or die (mysql_error());
+$todo='0';
+while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
+  $todo = $row['todo'];
+}
+$query="select id,word,next_version,woordtype,aantekeningen from words_list ".$where." limit 1024";
 $result = mysql_query($query) or die (mysql_error());
 $num = mysql_num_rows($result);
 $offset = rand(1, $num);
@@ -81,11 +88,12 @@ if (strcmp($woordstatus, 'k') == 0) {
                 <div data-role="collapsible-set" data-theme="b">
                     <div data-role="collapsible" data-collapsed="false">
                         <h3>
-                            Initiaalwoorden vinden
+                            Afkortingen classificeren
                         </h3>
-                        Het is hier mogelijk om <a href="index.php" data-transition="fade">bijdragen</a> te leveren aan OpenTaal omtrent <a target="_blank" href="https://nl.wikipedia.org/wiki/Initiaalwoord">initiaalwoorden</a>. Dit zijn woorden waarvan de letters los gespeld worden. Een dergelijk woord wordt ook wel <a target="_blank" href="https://nl.wikipedia.org/wiki/Acroniem">acroniem</a> genoemd en bevat meestal hoofdletters. Enkele voorbeelden zijn CBS, INL en MRI. Woorden die normaal worden uitgesproken heten letterwoorden. Voorbeelden hiervan zijn havo, NAVO en OpenStreetMap. Merk op dat dit niets te maken heeft met de hoofdletters of de afkomst van een <a target="_blank" href="https://nl.wikipedia.org/wiki/Afkorting">afkorting</a>. Omdat het hier om de uitspraak gaat zijn de getallen in <a target="_blank" href="">Romeinse cijfers</a>, zoals XIV en MMXIII, ook letterwoorden. Er bestaan ook mengvormen zoals XS4ALL en cd-rom. Dit geldt ook voor <a target="_blank" href="https://nl.wikipedia.org/wiki/Nederlandse_samenstelling">Samenstellingen</a> zoals PvdA-voorzitter. Let op, soms kan het zijn dat er verschillende uitspraken zijn. Dat is meestal het geval als er ook verschillende beteknissen zijn. Een voorbeeld is XXX dat een initiaalwoord is in de context van XXX-syndroom en dat ook een letterwoord is als het getal 30 in Romeinse cijfers. Een ander voorbeeld is V voor Volt en vijf. Er zijn dus verschillende instinkers zoals ook <a target="_blank" href="https://nl.wikipedia.org/wiki/BOB">BOB</a>, de Wet BOB (<em>b-o-b</em>).<!--alles herbenoemen tot (uitspraak) afkortingen en toevoegen symbolen, verkortingen etc.-->
+                        Het is hier mogelijk om <a href="index.php" data-transition="fade">bijdragen</a> te leveren aan OpenTaal omtrent <a target="_blank" href="https://nl.wikipedia.org/wiki/Afkotring">afkortingen</a>. TODO Dit zijn woorden waarvan de letters los gespeld worden. Een dergelijk woord wordt ook wel <a target="_blank" href="https://nl.wikipedia.org/wiki/Acroniem">acroniem</a> genoemd en bevat meestal hoofdletters. Enkele voorbeelden zijn CBS, INL en MRI. Woorden die normaal worden uitgesproken heten letterwoorden. Voorbeelden hiervan zijn havo, NAVO en OpenStreetMap. Merk op dat dit niets te maken heeft met de hoofdletters of de afkomst van een <a target="_blank" href="https://nl.wikipedia.org/wiki/Afkorting">afkorting</a>. Omdat het hier om de uitspraak gaat zijn de getallen in <a target="_blank" href="">Romeinse cijfers</a>, zoals XIV en MMXIII, ook letterwoorden. Er bestaan ook mengvormen zoals XS4ALL en cd-rom. Dit geldt ook voor <a target="_blank" href="https://nl.wikipedia.org/wiki/Nederlandse_samenstelling">Samenstellingen</a> zoals PvdA-voorzitter. Let op, soms kan het zijn dat er verschillende uitspraken zijn. Dat is meestal het geval als er ook verschillende beteknissen zijn. Een voorbeeld is XXX dat een initiaalwoord is in de context van XXX-syndroom en dat ook een letterwoord is als het getal 30 in Romeinse cijfers. Een ander voorbeeld is V voor Volt en vijf. Er zijn dus verschillende instinkers zoals ook <a target="_blank" href="https://nl.wikipedia.org/wiki/BOB">BOB</a>, de Wet BOB (<em>b-o-b</em>).
                     </div>
                 </div>
+Te doen: <?PHP echo $todo;?>
                 <div data-role="collapsible-set" data-theme="b">
                     <div data-role="collapsible" data-collapsed="<?PHP if (strcmp($woordtype, '') || strcmp($aantekeningen, '')) {echo 'false';} else {echo 'true';}?>">
                         <h3><?PHP echo $woord;?></h3>
@@ -99,12 +107,18 @@ if (strcmp($woordstatus, 'k') == 0) {
                 </div>
                         <form action="initiaalwoord.php" method="POST">
 <div id="checkboxes1" data-role="fieldcontain">
-<input id="checkbox1" name="initiaalvorm" type="checkbox">
-<label for="checkbox1">Initialwoord</label>
-<input id="checkbox2" name="letterwoord" type="checkbox">
-<label for="checkbox2">Letterwoord</label>
-<input id="checkbox3" name="mengvorm" type="checkbox">
-<label for="checkbox3">Mengvorm</label>
+<input id="checkbox1" name="inengerezin" type="checkbox">
+<label for="checkbox1">In engere zin</label>
+<input id="checkbox2" name="symbool" type="checkbox">
+<label for="checkbox2">Symbool</label>
+<input id="checkbox3" name="initiaalvorm" type="checkbox">
+<label for="checkbox3">Initialwoord</label>
+<input id="checkbox4" name="letterwoord" type="checkbox">
+<label for="checkbox4">Letterwoord</label>
+<input id="checkbox5" name="verkorting" type="checkbox">
+<label for="checkbox5">Verkorting</label>
+<input id="checkbox6" name="mengvorm" type="checkbox">
+<label for="checkbox6">Mengvorm</label>
 </div>
                 <div class="ui-grid-a">
                     <div class="ui-block-a">

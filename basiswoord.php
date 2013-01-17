@@ -21,14 +21,20 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
   $completed_test = $row['completed_test'];
 }
 
-$query="SELECT id,word,base_word,next_version,woordtype,aantekeningen FROM words_list WHERE (next_version = 'f' OR next_version = 'F' OR next_version = 'U' OR next_version = 'u') LIMIT 0,1000";
+$where="where (next_version = 'f' or next_version = 'F' or next_version = 'U' or next_version = 'u')";
+$query="select count(id) as todo from words_list ".$where;
+$result = mysql_query($query) or die (mysql_error());
+$todo = '0';
+while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
+  $todo = $row['todo'];
+}
+$query="select id,word,base_word,next_version,woordtype,aantekeningen from words_list ".$where." limit 1024";
 $result = mysql_query($query) or die (mysql_error());
 $num = mysql_num_rows($result);
 $offset = rand(1, $num);
 $count = 0;
 $id = '';
 $flexievorm = '';
-$suggestie = '';
 $woordstatus = '';
 $woordtype = '';
 $aantekeningen = '';
@@ -45,6 +51,8 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
         break;
     }
 }
+$suggestie = $flexievorm;
+/*
 if (strcmp($suggestie, '') == 0) {
   $lengte = mb_strlen($flexievorm);
   $suggestie = $flexievorm;
@@ -163,6 +171,7 @@ if (strcmp($suggestie, '') == 0) {
     $suggestie = mb_substr($flexievorm, 0, $lengte-1);
   }
 }
+*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -205,6 +214,9 @@ if (strcmp($suggestie, '') == 0) {
 <strong>Let op!!:</strong> sommige woorden hebben geen enkelvoud. Voorbeelden zijn hersenen, wegwerkzaamheden, etc. Vul dan letterlijk in <strong>PLURALE TANTUM</strong>.<br>
                                                     <a href="index.php" data-transition="fade">bijdragen</a>
                     </div>
+                </div>
+Te doen: <?PHP echo $todo;?>
+                <div data-role="collapsible-set" data-theme="b">
                     <div data-role="collapsible" data-collapsed="true">
                         <h3><?PHP echo $flexievorm;?></h3>
                         status: <?PHP echo $woordstatus;?>

@@ -61,7 +61,7 @@ toon help: <?PHP echo $show_help;?><br>
 test afgerond: <?PHP echo $completed_test;?><br>
                 <h3><a href="basiswoord.php" data-transition="fade">basiswoord</a></h3>
                 <h3><a href="correctie.php" data-transition="fade">correctie</a></h3>
-                <h3><a href="initiaalwoord.php" data-transition="fade">initiaalwoord</a></h3>
+                <h3><a href="afkoring.php" data-transition="fade">afkoring</a></h3>
                 <h3><a href="meervoud.php" data-transition="fade">meervoud</a></h3>
                 <h3><a href="eigennaam.php" data-transition="fade">eigennaam</a></h3>
                 <h3><a href="geslacht.php" data-transition="fade">geslacht</a> (moeilijk)</h3>
