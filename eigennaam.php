@@ -36,6 +36,7 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
         <meta http-equiv="content-type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
+                            Eigennaam categoriseren
         </title>
         <link rel="stylesheet" href="jquery.mobile-1.2.0.min.css" />
         <link rel="stylesheet" href="my.css" />

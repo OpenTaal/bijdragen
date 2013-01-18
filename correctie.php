@@ -6,7 +6,14 @@ require_once '../include/top.php';
 require_once '../i_lib.php';
 mysql_set_charset('utf8');
 
-$query="select id,word,alternatief,next_version,woordtype,aantekeningen from words_list WHERE (next_version = 'x' or next_version = 'X') limit 1000";
+$where="where (next_version = 'x' or next_version = 'X')";
+$query="select count(id) as todo from words_list ".$where;
+$result = mysql_query($query) or die (mysql_error());
+$todo = '0';
+while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
+  $todo = $row['todo'];
+}
+$query="select id,word,alternatief,next_version,woordtype,aantekeningen from words_list ".$where." limit 1024";
 $result = mysql_query($query) or die (mysql_error());
 $num = mysql_num_rows($result);
 $offset = rand(1, $num);
@@ -43,6 +50,7 @@ $woordstatus='Als incorrect in collectie opgenomen.';
         <meta http-equiv="content-type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
+                            Correctie bijdragen
         </title>
         <link rel="stylesheet" href="jquery.mobile-1.2.0.min.css" />
         <link rel="stylesheet" href="my.css" />
@@ -61,14 +69,16 @@ $woordstatus='Als incorrect in collectie opgenomen.';
         <div data-role="page" id="page1">
             <div data-role="content">
                 <div data-role="collapsible-set" data-theme="b">
-                    <div data-role="collapsible" data-collapsed="true">
+                    <div data-role="collapsible" data-collapsed="false">
                         <h3>
                             Correctie bijdragen
                         </h3>
-                        <p>asdf</p>
-                                                    <a href="index.php" data-transition="fade">bijdragen</a>
+                        Het is hier mogelijk om <a href="index.php" data-transition="fade">bijdragen</a> te leveren aan OpenTaal omtrent correcties van spelfouten. Geef hieronder aan wat de meeste waarschijnlijke correctie is voor het gegeven woord. Voor sommige woorden hebben we al een correctie en deze is dan vooringevuld en kan, indien nodig, worden aangepast. Als er niets vooringevuld is kan men zelf een correctie invoeren. Voorbeelden van correcties zijn <em>stoel</em> voor <em>steol</em>, <em>pannenkoek</em> voor <em>pannekoek</em>, <em>stationshal</em> voor <em>stationhal</em>, <em>starter</em> voor <em>startert</em>, <em>België</em> voor <em>Belgie</em>, <em>móét</em> voor <em>móet</em> en <em>ééuw</em> voor <em>ééúw</em>. Zie ook de naslagwerken <a target="_blank" href="http://taaladvies.net">Taaladvies</a>, <a target="_blank" href="http://woordenlijst.org/leidraad/inhoudsopgave/">Leidraad Spelling</a> en <a target="_blank" href="http://taaltelefoon.vlaanderen.be/nlapps/docs/default.asp?id=2594">Taaltelefoon</a>. Sommige woorden hebben geen zinvolle correctie. In dat geval kan een leeg veld worden ingediend. Als het te moeilijk is om een correctie te vinden kan het woord voorlopig worden overgeslagen. Indien een woord eigenlijk geen spelfout bevat, en een correctie dus onzinnig is, kan dit onderaan het formulier als een fout worden gemeld.
                     </div>
-                    <div data-role="collapsible" data-collapsed="true">
+                </div>
+Te doen: <?PHP echo $todo;?>
+                <div data-role="collapsible-set" data-theme="b">
+                    <div data-role="collapsible" data-collapsed="<?PHP if (strcmp($woordtype, '') || strcmp($aantekeningen, '')) {echo 'false';} else {echo 'true';}?>">
                         <h3><?PHP echo $fout;?></h3>
                         <strong>status:</strong> <?PHP echo $woordstatus;?>
 			<?PHP if (strcmp($woordtype, '')) {echo ' <strong>type:</strong> '.$woordtype;}?>
@@ -96,10 +106,11 @@ $woordstatus='Als incorrect in collectie opgenomen.';
                         <h3>
                             Fout melden
                         </h3>
-                        <form action="correctie.php" method="POST">
+                        <form action="initiaalwoord.php" method="POST">
+                        Het woord <?PHP echo $flexievorm;?> is niet incorrect omdat dit
                         <div data-role="fieldcontain">
-                                <input name="woord" id="woord" placeholder="" value="Nederlands" type="hidden" />
-                                <textarea name="opmerking" id="opmerking" placeholder="" value="" type="textarea">De fout goederentreinwagno </textarea>
+                                <input name="woord" id="id" placeholder="" value=" <?PHP echo $id;?>" type="hidden" />
+                                <input name="base" id="opmerking" placeholder="" value="" type="text" />
                         </div>
                         <input data-theme="e" value="Meld fout" type="submit" />
                         </form>

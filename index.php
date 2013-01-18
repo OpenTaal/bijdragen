@@ -29,6 +29,7 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
         <meta http-equiv="content-type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
+                            Bijdragen
         </title>
         <link rel="stylesheet" href="jquery.mobile-1.2.0.min.css" />
         <link rel="stylesheet" href="my.css" />
@@ -61,7 +62,7 @@ toon help: <?PHP echo $show_help;?><br>
 test afgerond: <?PHP echo $completed_test;?><br>
                 <h3><a href="basiswoord.php" data-transition="fade">basiswoord</a></h3>
                 <h3><a href="correctie.php" data-transition="fade">correctie</a></h3>
-                <h3><a href="afkoring.php" data-transition="fade">afkoring</a></h3>
+                <h3><a href="afkorting.php" data-transition="fade">afkorting</a></h3>
                 <h3><a href="meervoud.php" data-transition="fade">meervoud</a></h3>
                 <h3><a href="eigennaam.php" data-transition="fade">eigennaam</a></h3>
                 <h3><a href="geslacht.php" data-transition="fade">geslacht</a> (moeilijk)</h3>
