@@ -54,6 +54,7 @@ $woordstatus='Als incorrect in collectie opgenomen.';
         </title>
         <link rel="stylesheet" href="jquery.mobile-1.2.0.min.css" />
         <link rel="stylesheet" href="my.css" />
+        <link rel="icon" href="/favicon.ico" />
         <style>
             /* App custom styles */
         </style>
