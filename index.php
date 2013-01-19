@@ -63,8 +63,8 @@ toon help: <?PHP echo $show_help;?><br>
 test afgerond: <?PHP echo $completed_test;?><br>
                 <h3><a href="basiswoord.php" data-transition="fade">basiswoord</a></h3>
                 <h3><a href="correctie.php" data-transition="fade">correctie</a></h3>
-                <h3><a href="afkorting.php" data-transition="fade">afkorting</a></h3>
                 <h3><a href="meervoud.php" data-transition="fade">meervoud</a></h3>
+                <h3><a href="afkorting.php" data-transition="fade">afkorting</a></h3>
                 <h3><a href="eigennaam.php" data-transition="fade">eigennaam</a></h3>
                 <h3><a href="geslacht.php" data-transition="fade">geslacht</a> (moeilijk)</h3>
 in- en uitloggen

@@ -213,7 +213,7 @@ if (strcmp($suggestie, '') == 0) {
 <tr><td>(buiten)meisjes, (bier)viltjes, (dans)marietjes</td><td>zelfstandignaamwoord</td><td>(buiten)meisje, (bier)viltje, (dans)marietje</td></tr>
 </table>
 <strong>Let op!:</strong> de laatste regel met voorbeelden zijn <a target="_blank" href="http://data.opentaal.org/opentaalbank/spellingcontrole/next_version/uitzonderingen.php">uitzonderingen</a> omdat meis e.d niet bestaan.<br>
-<strong>Let op!!:</strong> sommige woorden hebben geen enkelvoud. Voorbeelden zijn hersenen, wegwerkzaamheden, etc. Vul dan letterlijk in <strong>PLURALE TANTUM</strong>.<br>
+<strong>Let op!!:</strong> sommige woorden hebben geen enkelvoud. Voorbeelden zijn hersenen, wegwerkzaamheden, etc. Dit zijn plurale tantum. Geef dit aan via het foutformulier.<br>
                                                     <a href="index.php" data-transition="fade">bijdragen</a>
                     </div>
                 </div>
