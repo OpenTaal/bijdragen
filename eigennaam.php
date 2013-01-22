@@ -67,8 +67,9 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
                         status: <?PHP echo $woordstatus;?>
 			<?PHP if (strcmp($woordtype, '')) {echo ' type: '.$woordtype;}?>
 			<?PHP if (strcmp($aantekeningen, '')) {echo ' aantekening: '.$aantekeningen;}?>
+                        &nbsp;&nbsp;&nbsp;<a target="_blank" href="http://data.opentaal.org/opentaalbank/woorddetails.php?word=<?PHP echo $eigennaam;?>"><img src="images/opentaal.png"></a>
                         &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wikipedia.org/wiki/<?PHP echo $eigennaam;?>"><img src="images/wikipedia.png"></a>
-                        &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wiktionary.org/wiki/<?PHP echo $flexievorm;?>"><img src="images/wiktionary.png"></a>
+                        &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wiktionary.org/wiki/<?PHP echo $eigennaam;?>"><img src="images/wiktionary.png"></a>
                         &nbsp;&nbsp;&nbsp;<a target="_blank" href='https://google.nl/#hl=nl&q="<?PHP echo $eigennaam;?>"'><img src="images/google.png"></a>
                     </div>
                 </div>
@@ -146,7 +147,7 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
                             Fout melden
                         </h3>
                         <form action="eigennaam.php" method="POST">
-                        De eigennaam <?PHP echo $eigennaam;?> is fout omdat deze
+                        De eigennaam <?PHP echo $eigennaam;?> met id <?PHP echo $id;?> is fout omdat deze
                         <div data-role="fieldcontain">
                                 <input name="woord" id="id" placeholder="" value=" <?PHP echo $id;?>" type="hidden" />
                                 <input name="base" id="opmerking" placeholder="" value="" type="text" />

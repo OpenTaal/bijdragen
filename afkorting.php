@@ -102,8 +102,9 @@ Te doen: <?PHP echo $todo;?>
                         <strong>status:</strong> <?PHP echo $woordstatus;?>
 			<?PHP if (strcmp($woordtype, '')) {echo ' <strong>type</strong>: '.$woordtype;}?>
 			<?PHP if (strcmp($aantekeningen, '')) {echo ' <strong>aantekening</strong>: '.$aantekeningen;}?>
+                        &nbsp;&nbsp;&nbsp;<a target="_blank" href="http://data.opentaal.org/opentaalbank/woorddetails.php?word=<?PHP echo $woord;?>"><img src="images/opentaal.png"></a>
                         &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wikipedia.org/wiki/<?PHP echo $woord;?>"><img src="images/wikipedia.png"></a>
-                        &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wiktionary.org/wiki/<?PHP echo $flexievorm;?>"><img src="images/wiktionary.png"></a>
+                        &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wiktionary.org/wiki/<?PHP echo $woord;?>"><img src="images/wiktionary.png"></a>
                         &nbsp;&nbsp;&nbsp;<a target="_blank" href='https://google.nl/#hl=nl&q="<?PHP echo $woord;?>"'><img src="images/google.png"></a>
                     </div>
                 </div>
@@ -139,7 +140,7 @@ Te doen: <?PHP echo $todo;?>
                             Fout melden
                         </h3>
                         <form action="initiaalwoord.php" method="POST">
-                        Het woord <?PHP echo $flexievorm;?> is fout omdat dit
+                        Het woord <?PHP echo $flexievorm;?> met id <?PHP echo $id;?> is fout omdat dit
                         <div data-role="fieldcontain">
                                 <input name="woord" id="id" placeholder="" value=" <?PHP echo $id;?>" type="hidden" />
                                 <input name="base" id="opmerking" placeholder="" value="" type="text" />

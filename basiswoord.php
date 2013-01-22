@@ -224,6 +224,7 @@ Te doen: <?PHP echo $todo;?>
                         status: <?PHP echo $woordstatus;?>
 			<?PHP if (strcmp($woordtype, '')) {echo ' type: '.$woordtype;}?>
 			<?PHP if (strcmp($aantekeningen, '')) {echo ' aantekening: '.$aantekeningen;}?>
+                        &nbsp;&nbsp;&nbsp;<a target="_blank" href="http://data.opentaal.org/opentaalbank/woorddetails.php?word=<?PHP echo $flexievorm;?>"><img src="images/opentaal.png"></a>
                         &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wikipedia.org/wiki/<?PHP echo $flexievorm;?>"><img src="images/wikipedia.png"></a>
                         &nbsp;&nbsp;&nbsp;<a target="_blank" href="https://nl.wiktionary.org/wiki/<?PHP echo $flexievorm;?>"><img src="images/wiktionary.png"></a>
                         &nbsp;&nbsp;&nbsp;<a target="_blank" href='https://google.nl/#hl=nl&q="<?PHP echo $flexievorm;?>"'><img src="images/google.png"></a>
@@ -248,7 +249,7 @@ Te doen: <?PHP echo $todo;?>
                             Fout melden
                         </h3>
                         <form action="basiswoord.php" method="POST">
-                        De flexievorm <?PHP echo $flexievorm;?> is fout omdat deze
+                        De flexievorm <?PHP echo $flexievorm;?> met id <?PHP echo $id;?> is fout omdat deze
                         <div data-role="fieldcontain">
                                 <input name="woord" id="id" placeholder="" value="<?PHP echo $id;?>" type="hidden" />
                                 <input name="base" id="opmerking" placeholder="" value="" type="text" />

@@ -69,7 +69,7 @@
                             Fout melden
                         </h3>
                         <form action="geslacht.php" method="POST">
-                        Het woord <?PHP echo $woord;?> is fout omdat dit
+                        Het woord <?PHP echo $woord;?> met id <?PHP echo $id;?> is fout omdat dit
                         <div data-role="fieldcontain">
                                 <input name="woord" id="id" placeholder="" value=" <?PHP echo $id;?>" type="hidden" />
                                 <input name="base" id="opmerking" placeholder="" value="" type="text" />

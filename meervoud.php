@@ -65,7 +65,7 @@
                             Fout melden
                         </h3>
                         <form action="meervoud.php" method="POST">
-                        De meervoudsvorm <?PHP echo $woord;?> is fout omdat deze
+                        De meervoudsvorm <?PHP echo $woord;?> met id <?PHP echo $id;?> is fout omdat deze
                         <div data-role="fieldcontain">
                                 <input name="woord" id="id" placeholder="" value=" <?PHP echo $id;?>" type="hidden" />
                                 <input name="base" id="opmerking" placeholder="" value="" type="text" />

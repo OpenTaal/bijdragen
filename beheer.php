@@ -40,7 +40,7 @@ mysql_set_charset('utf8');
                         TODO
                     </div>
                 </div>
-Hieronder staan alle testen die momenteel in onze database zitten. Deze testen moeten door elke gebruiker 100% correct worden gedaan alvorens ze echt bijdragen mogen gaan leveren. Standaard foucodes zijn: FOUT_WANT_MOET_ZIJN_BASISVORM, ..., ..., ... Dit moeten opties zijn in het foutformulier (TODO)
+Hieronder staan alle testen die momenteel in onze database zitten. Deze testen moeten door elke gebruiker 100% correct worden gedaan alvorens ze echt bijdragen mogen gaan leveren. Standaard foutcodes zijn: FOUT_WANT_, ..., ..., ... Dit moeten opties zijn in het foutformulier (TODO)
 <?PHP
 $query="select * from mobile_type";
 $result = mysql_query($query) or die (mysql_error());
@@ -49,7 +49,7 @@ while ($row=mysql_fetch_array($result, MYSQL_ASSOC)) {
 echo "<h3>".$row['description']." (type_id=".$row['type_id'].")</h3>\n";
 echo "<table border='1'>\n";
 echo "<tr><th>woord id</th><th>woord</th><th>suggestie(s)</th></tr>\n";
-$query2="select wl.id,wl.word,mt.suggestion from mobile_tests as mt left join words_list as wl on (mt.word_id = wl.id) where mt.type_id = ".$row['type_id']." and wl.id = mt.word_id";
+$query2="select wl.id,wl.word,mt.suggestion from mobile_tests as mt left join words_list as wl on (mt.word_id = wl.id) where mt.type_id = ".$row['type_id'];
 $result2 = mysql_query($query2) or die (mysql_error());
 while ($row2=mysql_fetch_array($result2, MYSQL_ASSOC)) {
 echo "<tr><td>".$row2['id']."</td><td>".$row2['word']."</td><td>".$row2['suggestion']."</td></tr>\n";
